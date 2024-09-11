@@ -10,7 +10,7 @@
 
 #include <rtthread.h>
 #include <rtdevice.h>
-
+#include <stdlib.h>
 #if (defined(BSP_USING_LCD)) || (defined(SOC_SERIES_R7FA8M85))
 #include <ra8/lcd_config.h>
 #include <drv_lcd.h>
@@ -419,6 +419,57 @@ void Disp0_DrawBitmap (uint32_t x, uint32_t y, uint32_t width, uint32_t height, 
         phwDes += LCD_WIDTH;
     }
 }
+static int lcd_draw_point(int args,char *argv[])
+{
+	  struct drv_lcd_device *lcd;
+    struct rt_device_rect_info rect_info;
+    rect_info.x = 0;
+    rect_info.y = 0;
+    rect_info.width = LCD_WIDTH;
+    rect_info.height = LCD_HEIGHT;
+
+    lcd = (struct drv_lcd_device *)rt_device_find("lcd");
+	
+	rt_kprintf("lcd_draw_point LCD_WIDTH:%d LCD_HEIGHT=%d \r\n",LCD_WIDTH,LCD_HEIGHT);
+		
+	 int x = 0;
+	 int y = 0;
+	 int i, k;
+
+
+	
+	 x = atoi(argv[1]);
+	 y = atoi(argv[2]);
+	
+	rt_kprintf("input  is x:%d,y:%d\n",x,y);
+	 
+	  if(x >= LCD_WIDTH)   x = LCD_WIDTH  - 1;
+    if(y >= LCD_HEIGHT)  y = LCD_HEIGHT - 1;
+    if (x < 0) x = 0;
+    if (y < 0) y = 0;
+
+    rt_kprintf("Darw point is x:%d,y:%d\n",x,y);
+		
+		for (i = y - 2; i < y + 2; i++)
+    {
+        if (i < 0) continue;
+        if (i >= LCD_HEIGHT) break;
+        for (k = x - 2; k < x + 2; k++)
+        {
+            if (k < 0) continue;
+            if (k >= LCD_WIDTH) break;
+
+					*((uint16_t *)lcd->lcd_info.framebuffer + LCD_WIDTH * i + k) = 0xF800;
+        }
+    }
+		
+		lcd->parent.control(&lcd->parent, RTGRAPHIC_CTRL_RECT_UPDATE, &rect_info);
+
+
+	
+	
+}
+MSH_CMD_EXPORT(lcd_draw_point,draw a point on lcd);
 
 int lcd_test(void)
 {
