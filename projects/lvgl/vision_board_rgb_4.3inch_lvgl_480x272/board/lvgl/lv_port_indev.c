@@ -10,9 +10,9 @@
 #include <lvgl.h>
 #include <rtdevice.h>
 
-#include "gt9147.h"
-#define GT9147_RST_PIN   BSP_IO_PORT_00_PIN_00
-#define GT9147_IRQ_PIN   BSP_IO_PORT_00_PIN_10
+#include "gt911.h"
+#define GT911_RST_PIN   BSP_IO_PORT_00_PIN_00
+#define GT911_IRQ_PIN   BSP_IO_PORT_00_PIN_10
 
 #define DBG_TAG "lv_port_indev"
 #define DBG_LVL DBG_LOG
@@ -30,8 +30,8 @@ static void touchpad_read(lv_indev_t *indev_drv, lv_indev_data_t *data)
         if (read_data->event == RT_TOUCH_EVENT_NONE)
             return;
 
-        data->point.x = LV_HOR_RES_MAX - read_data->x_coordinate;
-        data->point.y = LV_VER_RES_MAX - read_data->y_coordinate;
+        data->point.x = read_data->x_coordinate;
+        data->point.y = read_data->y_coordinate;
 
         if (read_data->event == RT_TOUCH_EVENT_DOWN)
             data->state = LV_INDEV_STATE_PR;
@@ -42,11 +42,11 @@ static void touchpad_read(lv_indev_t *indev_drv, lv_indev_data_t *data)
     }
 }
 
-static rt_err_t gt9147_probe(rt_uint16_t x, rt_uint16_t y)
+static rt_err_t gt911_probe(rt_uint16_t x, rt_uint16_t y)
 {
     void *id;
 
-    touch_dev = rt_device_find("gt9147");
+    touch_dev = rt_device_find("gt911");
     if (touch_dev == RT_NULL)
     {
         rt_kprintf("can't find device gt911\n");
@@ -81,23 +81,23 @@ static rt_err_t gt9147_probe(rt_uint16_t x, rt_uint16_t y)
     return RT_EOK;
 }
 
-rt_err_t rt_hw_gt9147_register(void)
+rt_err_t rt_hw_gt911_register(void)
 {
     struct rt_touch_config config;
     rt_uint8_t rst;
-    rst = GT9147_RST_PIN;
+    rst = GT911_RST_PIN;
     config.dev_name = "sci3i";
-    config.irq_pin.pin = GT9147_IRQ_PIN;
+    config.irq_pin.pin = GT911_IRQ_PIN;
     config.irq_pin.mode = PIN_MODE_INPUT_PULLDOWN;
     config.user_data = &rst;
 
-    if (rt_hw_gt9147_init("gt9147", &config) != RT_EOK)
+    if (rt_hw_gt911_init("gt911", &config) != RT_EOK)
     {
-        rt_kprintf("touch device gt9147 init failed.\n");
+        rt_kprintf("touch device gt911 init failed.\n");
         return -RT_ERROR;
     }
 
-    if (gt9147_probe(LV_HOR_RES_MAX, LV_VER_RES_MAX) != RT_EOK)
+    if (gt911_probe(LV_HOR_RES_MAX, LV_VER_RES_MAX) != RT_EOK)
     {
         rt_kprintf("probe gt9147 failed.\n");
         return -RT_ERROR;
@@ -114,5 +114,5 @@ void lv_port_indev_init(void)
     lv_indev_set_read_cb(indev_touchpad, touchpad_read);
 
     /* Register touch device */
-    rt_hw_gt9147_register();
+    rt_hw_gt911_register();
 }

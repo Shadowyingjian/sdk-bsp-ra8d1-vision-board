@@ -172,7 +172,8 @@
 #define PKG_LVGL_THREAD_STACK_SIZE 8192
 #define PKG_LVGL_DISP_REFR_PERIOD 10
 #define PKG_LVGL_USING_V09010
-#define PKG_LVGL_VER_NUM 0x009010
+#define PKG_LVGL_VER_NUM 0x090100
+#define PKG_USING_LV_MUSIC_DEMO
 
 /* u8g2: a monochrome graphic library */
 
@@ -201,6 +202,9 @@
 /* STM32 HAL & SDK Drivers */
 
 
+/* Infineon HAL Packages */
+
+
 /* Kendryte SDK */
 
 
@@ -209,8 +213,8 @@
 
 /* touch drivers */
 
-#define PKG_USING_GT9147
-#define PKG_USING_GT9147_V110
+#define PKG_USING_GT911
+#define PKG_USING_GT911_LATEST_VERSION
 
 /* AI packages */
 
@@ -293,7 +297,6 @@
 
 #define BSP_USING_LVGL_DAVE2D
 #define BSP_USING_LVGL_DEMO
-#define BSP_USING_LVGL_BENCHMARK_DEMO
 #define BSP_USING_LVGL_WIDGETS_DEMO
 
 #endif

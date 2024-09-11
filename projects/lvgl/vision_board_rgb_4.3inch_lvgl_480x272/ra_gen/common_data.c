@@ -132,7 +132,7 @@ const uint8_t DRW_INT_IPL = (2);
             .tcon_de               = GLCDC_TCON_PIN_3,
             .correction_proc_order = GLCDC_CORRECTION_PROC_ORDER_BRIGHTNESS_CONTRAST2GAMMA,
             .clksrc                = GLCDC_CLK_SRC_INTERNAL,
-            .clock_div_ratio       = GLCDC_PANEL_CLK_DIVISOR_8,
+            .clock_div_ratio       = GLCDC_PANEL_CLK_DIVISOR_24,
             .dithering_mode        = GLCDC_DITHERING_MODE_TRUNCATE,
             .dithering_pattern_A   = GLCDC_DITHERING_PATTERN_11,
             .dithering_pattern_B   = GLCDC_DITHERING_PATTERN_11,
@@ -231,17 +231,17 @@ const uint8_t DRW_INT_IPL = (2);
             {
                 .htiming =
                 {
-                    .total_cyc       = 1024,
-                    .display_cyc     = 800,
-                    .back_porch      = 46,
+                    .total_cyc       = 531,
+                    .display_cyc     = 480,
+                    .back_porch      = 43,
                     .sync_width       = 1,
                     .sync_polarity   = DISPLAY_SIGNAL_POLARITY_LOACTIVE
                 },
                 .vtiming =
                 {
-                    .total_cyc       = 525,
-                    .display_cyc     = 480,
-                    .back_porch      = 23,
+                    .total_cyc       = 292,
+                    .display_cyc     = 272,
+                    .back_porch      = 12,
                     .sync_width       = 1,
                     .sync_polarity   = DISPLAY_SIGNAL_POLARITY_LOACTIVE
                 },

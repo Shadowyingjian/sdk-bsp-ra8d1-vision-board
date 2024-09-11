@@ -313,8 +313,8 @@
       <property id="module.driver.display.underflow_1_ipl" value="_disabled"/>
       <property id="module.driver.display.underflow_2_ipl" value="_disabled"/>
       <property id="module.driver.display.input0.enable" value="module.driver.display.input0.enable.true"/>
-      <property id="module.driver.display.input0.hsize" value="800"/>
-      <property id="module.driver.display.input0.vsize" value="480"/>
+      <property id="module.driver.display.input0.hsize" value="480"/>
+      <property id="module.driver.display.input0.vsize" value="272"/>
       <property id="module.driver.display.layer0.coordinate.x" value="0"/>
       <property id="module.driver.display.layer0.coordinate.y" value="0"/>
       <property id="module.driver.display.layer0.color.byte.a" value="255"/>
@@ -348,14 +348,14 @@
       <property id="module.driver.display.input1.lines_repeat_times" value="0"/>
       <property id="module.driver.display.layer1.fade_control" value="module.driver.display.layer1.fade_control.fade_control_none"/>
       <property id="module.driver.display.layer1.fade_speed" value="0"/>
-      <property id="module.driver.display.output.htiming.total_cyc" value="1024"/>
-      <property id="module.driver.display.output.htiming.display_cyc" value="800"/>
-      <property id="module.driver.display.output.htiming.back_porch" value="46"/>
+      <property id="module.driver.display.output.htiming.total_cyc" value="531"/>
+      <property id="module.driver.display.output.htiming.display_cyc" value="480"/>
+      <property id="module.driver.display.output.htiming.back_porch" value="43"/>
       <property id="module.driver.display.output.htiming.sync_width" value="1"/>
       <property id="module.driver.display.output.htiming.sync_polarity" value="module.driver.display.output.htiming.sync_polarity.signal_polarity_loactive"/>
-      <property id="module.driver.display.output.vtiming.total_cyc" value="525"/>
-      <property id="module.driver.display.output.vtiming.display_cyc" value="480"/>
-      <property id="module.driver.display.output.vtiming.back_porch" value="23"/>
+      <property id="module.driver.display.output.vtiming.total_cyc" value="292"/>
+      <property id="module.driver.display.output.vtiming.display_cyc" value="272"/>
+      <property id="module.driver.display.output.vtiming.back_porch" value="12"/>
       <property id="module.driver.display.output.vtiming.sync_width" value="1"/>
       <property id="module.driver.display.output.vtiming.sync_polarity" value="module.driver.display.output.vtiming.sync_polarity.signal_polarity_loactive"/>
       <property id="module.driver.display.output.data_enable_polarity" value="module.driver.display.output.data_enable_polarity.signal_polarity_hiactive"/>
@@ -373,7 +373,7 @@
       <property id="module.driver.display.tcon_vsync" value="module.driver.display.tcon_vsync.tcon_pin_1"/>
       <property id="module.driver.display.tcon_de" value="module.driver.display.tcon_de.tcon_pin_3"/>
       <property id="module.driver.display.clksrc" value="module.driver.display.clksrc.clk_src_internal"/>
-      <property id="module.driver.display.clock_div_ratio" value="module.driver.display.clock_div_ratio.panel_clk_divisor_8"/>
+      <property id="module.driver.display.clock_div_ratio" value="module.driver.display.clock_div_ratio.panel_clk_divisor_24"/>
       <property id="module.driver.display.correction_proc_order" value="module.driver.display.correction_proc_order.correction_proc_order_brightness_contrast2gamma"/>
       <property id="module.driver.display.output.brightness.enable" value="module.driver.display.output.brightness.false"/>
       <property id="module.driver.display.output.brightness.r" value="512"/>

@@ -67,8 +67,8 @@ void irq_callback(external_irq_callback_args_t * p_args);
             #else
             #define DISPLAY_BITS_PER_PIXEL_INPUT0 (1)
             #endif
-            #define DISPLAY_HSIZE_INPUT0                 (800)
-            #define DISPLAY_VSIZE_INPUT0                 (480)
+            #define DISPLAY_HSIZE_INPUT0                 (480)
+            #define DISPLAY_VSIZE_INPUT0                 (272)
             #define DISPLAY_BUFFER_STRIDE_BYTES_INPUT0   (((DISPLAY_HSIZE_INPUT0 * DISPLAY_BITS_PER_PIXEL_INPUT0 + 0x1FF) >> 9) << 6)
             #define DISPLAY_BUFFER_STRIDE_PIXELS_INPUT0  ((DISPLAY_BUFFER_STRIDE_BYTES_INPUT0 * 8) / DISPLAY_BITS_PER_PIXEL_INPUT0)
             #if GLCDC_CFG_LAYER_1_ENABLE
